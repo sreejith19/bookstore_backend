@@ -38,6 +38,12 @@ namespace WebApplication14
                 defaults: new { id = RouteParameter.Optional },
                 constraints: new { id = @"^\d+$" }
             ) ;
+            config.Routes.MapHttpRoute(
+                name: "ActionAndMultipleIds",
+                routeTemplate: "api/{controller}/{action}/{id}/{data}",
+                defaults: new { id = RouteParameter.Optional },
+                constraints: new { id = @"^\d+$", data= @"^\d+$" }
+            );
 
             config.Routes.MapHttpRoute(
                 name: "Action",

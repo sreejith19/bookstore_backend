@@ -1,10 +1,12 @@
-﻿using System;
+﻿using Microsoft.Ajax.Utilities;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Net;
 using System.Web;
+using System.Web.Mvc.Ajax;
 
 namespace WebApplication14.Models
 {
@@ -118,6 +120,19 @@ namespace WebApplication14.Models
             if (rows > 0)
                 return true;
             return false;
+        }
+        public static double ApplyCoupons(Order order)
+        {
+            
+            foreach(string coupon in order.coupons){
+                Coupon c = new CouponImplementation().GetCouponByCode(coupon);
+                if (c is null)
+                {
+                    continue;
+                }
+                order.sellingPrice = order.sellingPrice * (100 - c.discount) / 100;
+            }
+            return order.sellingPrice;
         }
     }
 }

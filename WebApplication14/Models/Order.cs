@@ -16,22 +16,17 @@ namespace WebApplication14.Models
         public int status { get; set; }
         public string[] coupons { get; set; }
 
-        private bool applyCoupons()
+        
+        public Order(int orderId, int userId, int bookId, DateTime orderTime,double basePrice,double sellingPrice,int status, string[] coupons)
         {
-            //to be implemented
-            return true;
-        }
-        public Order(int userId, int bookId, DateTime orderTime, string[] coupons)
-        {
-            this.orderId = 0;
+            this.orderId = orderId;
             this.userId = userId;
             this.bookId = bookId;
             this.orderTime = orderTime;
-            this.basePrice = new BookImplementation().GetBookById(bookId).price;
-            this.status = 0;
-            this.sellingPrice = basePrice;
+            this.basePrice = basePrice;
+            this.status = status;
+            this.sellingPrice = sellingPrice;
             this.coupons = coupons;
-            this.applyCoupons();
         }
     }
 }

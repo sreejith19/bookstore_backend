@@ -16,6 +16,5 @@ namespace WebApplication14.Models
         int Delete(int id);
         bool Enable(int id);
         bool Disable(int id);
-
     }
 }

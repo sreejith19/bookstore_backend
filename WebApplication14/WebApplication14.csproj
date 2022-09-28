@@ -156,31 +156,40 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\BookController.cs" />
+    <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\CouponController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\OrderController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
+    <Compile Include="Controllers\WishListController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Book.cs" />
     <Compile Include="Models\BookImplementation.cs" />
+    <Compile Include="Models\CartEntry.cs" />
+    <Compile Include="Models\CartImplementation.cs" />
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\CategoryImplementation.cs" />
     <Compile Include="Models\Coupon.cs" />
     <Compile Include="Models\CouponImplementation.cs" />
     <Compile Include="Models\Credentials.cs" />
     <Compile Include="Models\IBookRepository.cs" />
+    <Compile Include="Models\ICartRepository.cs" />
     <Compile Include="Models\ICategoryrepository.cs" />
     <Compile Include="Models\ICouponRepository.cs" />
     <Compile Include="Models\ILoginRepository.cs" />
+    <Compile Include="Models\IOrderRepository.cs" />
     <Compile Include="Models\IUserRepository.cs" />
     <Compile Include="Models\LoginImplementation.cs" />
     <Compile Include="Models\Order.cs" />
+    <Compile Include="Models\OrderImplementation.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\UserImplementation.cs" />
+    <Compile Include="Models\WishListEntry.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
