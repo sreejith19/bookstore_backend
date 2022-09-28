@@ -49,7 +49,7 @@ namespace WebApplication14.Models
         }
         public Book GetBookById(int bookId)
         {
-            comm.CommandText = "select * from Books where bookId=" + bookId+ " and status=1;";
+            comm.CommandText = "select * from Books where bookId=" + bookId+ ";";
             comm.Connection = conn;
             conn.Open();
             SqlDataReader reader = comm.ExecuteReader();
@@ -66,6 +66,7 @@ namespace WebApplication14.Models
                 int s = Convert.ToInt32(reader["status"]);
                 string img = reader["image"].ToString();
                 string author = reader["author"].ToString();
+                conn.Close();
                 return new Book(id, catId, title, isbn, year, price, desc, pos, s, img, author);
             }
             conn.Close();
@@ -143,6 +144,7 @@ namespace WebApplication14.Models
                 int s = Convert.ToInt32(reader["status"]);
                 string img = reader["image"].ToString();
                 string author = reader["author"].ToString();
+                conn.Close();
 
                 return new Book(id, catId, title, isbn, year, price, desc, pos, s, img, author);
             }
@@ -201,6 +203,24 @@ namespace WebApplication14.Models
             int rows = comm.ExecuteNonQuery();
             conn.Close();
             return rows;
+        }
+        public bool Enable(int id)
+        {
+            Book book = GetBookById(id);
+            book.status = 1;
+            int rows = EditBook(book);
+            if (rows > 0)
+                return true;
+            return false;
+        }
+        public bool Disable(int id)
+        {
+            Book book = GetBookById(id);
+            book.status = 0;
+            int rows = EditBook(book);
+            if (rows > 0)
+                return true;
+            return false;
         }
     }
 }

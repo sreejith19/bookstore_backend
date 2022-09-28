@@ -56,6 +56,7 @@ namespace WebApplication14.Models
                 int s = Convert.ToInt32(reader["status"]);
                 string pos = reader["position"].ToString();
                 DateTime date = Convert.ToDateTime(reader["createdAt"].ToString());
+                conn.Close();
                 return new Category(id, name, desc, img, s, pos, date);
             }
             conn.Close();
@@ -87,6 +88,24 @@ namespace WebApplication14.Models
             int rows = comm.ExecuteNonQuery();
             conn.Close();
             return rows;
+        }
+        public bool Enable(int id)
+        {
+            Category category = getCategoryById(id);
+            category.status = 1;
+            int rows = editCategory(category);
+            if (rows > 0)
+                return true;
+            return false;
+        }
+        public bool Disable(int id)
+        {
+            Category category = getCategoryById(id);
+            category.status = 0;
+            int rows = editCategory(category);
+            if (rows > 0)
+                return true;
+            return false;
         }
     }
 }

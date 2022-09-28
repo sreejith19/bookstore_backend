@@ -13,5 +13,7 @@ namespace WebApplication14.Models
         int addCategory(Category category);
         int editCategory(Category category);
         int deleteCategoryById(int catId);
+        bool Enable(int id);
+        bool Disable(int id);
     }
 }

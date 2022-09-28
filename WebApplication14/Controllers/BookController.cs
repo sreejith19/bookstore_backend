@@ -75,6 +75,22 @@ namespace WebApplication14.Controllers
             var data = repository.EditBook(book);
             return data;
         }
+        [System.Web.Http.ActionName("Enable")]
+        [System.Web.Http.HttpPost]
+        public bool Enable([FromBody] int id)
+        {
+            Debug.WriteLine("new enable");
+            bool data = repository.Enable(id);
+            return data;
+        }
+        [System.Web.Http.ActionName("Disable")]
+        [System.Web.Http.HttpPost]
+        public bool Disable([FromBody] int id)
+        {
+            Debug.WriteLine("new disable");
+            bool data = repository.Disable(id);
+            return data;
+        }
         [System.Web.Http.ActionName("Delete")]
         [System.Web.Http.HttpPost]
         public int Delete([FromBody] int id)

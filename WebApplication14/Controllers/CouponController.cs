@@ -1,52 +1,52 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.IO;
 using System.Linq;
-using System.Web;
+using System.Net;
+using System.Net.Http;
 using System.Web.Http;
-using System.Web.Mvc;
-
 using WebApplication14.Models;
 
 namespace WebApplication14.Controllers
 {
-    public class CategoryController : ApiController
+    public class CouponController : ApiController
     {
-        // GET: Category
-        private ICategoryrepository repository;
-
-        public CategoryController()
+        private ICouponRepository repository;
+        public CouponController()
         {
-            repository = new CategoryImplementation();
+            repository = new CouponImplementation();
         }
         [System.Web.Http.HttpGet]
         public IHttpActionResult Get()
         {
-            var data = repository.getAll();
-            return Ok(data); 
+            var data = repository.GetAll();
+            return Ok(data);
         }
         public IHttpActionResult Get(int id)
         {
-            var data = repository.getCategoryById(id);
+            var data = repository.GetCouponById(id);
             return Ok(data);
         }
-        //[System.Web.Http.Route("Add")]
+        public IHttpActionResult Get(string value)
+        {
+            var data = repository.GetCouponByCode(value);
+            return Ok(data);
+        }
         [System.Web.Http.ActionName("Add")]
         [System.Web.Http.HttpPost]
-        public IHttpActionResult Add([FromBody] Category category)
+        public IHttpActionResult Add([FromBody] Coupon coupon)
         {
             Debug.WriteLine("new add");
-            int data = repository.addCategory(category);
+            Debug.WriteLine(coupon.couponId);
+            int data = repository.Add(coupon);
             return Ok(data);
         }
-        //[System.Web.Http.Route("Edit")]
         [System.Web.Http.ActionName("Edit")]
         [System.Web.Http.HttpPost]
-        public IHttpActionResult Edit([FromBody] Category category)
+        public IHttpActionResult Edit([FromBody] Coupon coupon)
         {
             Debug.WriteLine("new edit");
-            int data = repository.editCategory(category);
+            int data = repository.Edit(coupon);
             return Ok(data);
         }
         [System.Web.Http.ActionName("Enable")]
@@ -70,7 +70,7 @@ namespace WebApplication14.Controllers
         public IHttpActionResult Delete([FromBody] int id)
         {
             Debug.WriteLine("new delete");
-            int data = repository.deleteCategoryById(id);
+            int data = repository.Delete(id);
             return Ok(data);
         }
     }

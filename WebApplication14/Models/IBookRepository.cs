@@ -17,5 +17,7 @@ namespace WebApplication14.Models
         int AddBook(Book book);
         int EditBook(Book book);
         int DeleteBook(int bookId);
+        bool Enable(int id);
+        bool Disable(int id);
     }
 }
